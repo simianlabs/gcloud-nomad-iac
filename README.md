@@ -47,5 +47,9 @@ Modify `dns.tf` if you want to create public dns zones (disabled by default)
 After you run `terraform apply` on this configuration, it will
 automatically output the public IP address of all hosts.
 
+## Nomad ui
+
+Ui is available at http://nomad-01:4646/ui
+
 ## Maintainer
 Stefan Monko (monkostefan@gmail.com)(https://github.com/Skyneo)
