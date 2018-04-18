@@ -42,6 +42,8 @@ Then [download your credentials from Google Cloud Console](https://www.terraform
 
 Create `terraform.tfvars` file with your project variables. YOu can use `terrraform.tfvars.example` as template.
 
+Modify `dns.tf` if you want to create public dns zones (disabled by default)
+
 After you run `terraform apply` on this configuration, it will
 automatically output the public IP address of all hosts.
 
