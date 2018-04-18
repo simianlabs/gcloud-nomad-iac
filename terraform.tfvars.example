@@ -1,0 +1,19 @@
+region = "europe-west2"
+
+region_zone = "europe-west2-a"
+
+project_name = "nomad-concept"
+
+ip_cidr_range = "10.154.13.0/24"
+
+# dns_zone_name = "nomad.local"
+
+machine_type = "f1-micro"
+
+host_count = "4"
+
+host_image = "ubuntu-1604-xenial-v20180418"
+
+public_key_path = "./secret/nomad_id_rsa.pub"
+
+private_key_path = "./secret/nomad_id_rsa"
