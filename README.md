@@ -1,5 +1,7 @@
 # Google Cloud - Nomad IaC
 
+``Version 1.0.0``  
+
 ## Description
 Simple terraform code which will provision instances with Nomad agents ready to start your jobs.
 
@@ -14,7 +16,7 @@ Currently only 1 server and X slaves is supported.
 ## Structure
 
 ```
-ris-vt
+gcloud-nomad-iac
     scripts
       |— startup.sh
     secret
@@ -52,4 +54,5 @@ automatically output the public IP address of all hosts.
 Ui is available at http://nomad-01:4646/ui
 
 ## Maintainer
-Stefan Monko (monkostefan@gmail.com)(https://github.com/Skyneo)
+`Simian Labs` - (https://github.com/simianlabs)  
+http://simianlabs.io || sl@simianlabs.io
