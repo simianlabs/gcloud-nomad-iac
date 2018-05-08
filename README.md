@@ -1,13 +1,22 @@
+
+
+![license](https://img.shields.io/github/license/mashape/apistatus.svg)  
+![license](https://img.shields.io/badge/Version-1.1.0-blue.svg)  
+
 # Google Cloud - Nomad IaC
 
-``Version 1.0.0``  
+![Alt text](Diagram.png "Schema")
+
+
+``Version 1.1.0``  
 
 ## Description
 Simple terraform code which will provision instances with Nomad agents ready to start your jobs.
 
 `startup.sh` will install nomad and docker on each instance.
-For custom requirements just place them inside script.
-`provisioners` in main code will copy config.hcl and nomad.service files to server.
+For custom requirements just place them inside script.  
+`provisioners` in main code will copy config.hcl and nomad.service files to server and also install goss for unit testing.  
+`test.tf` trough null_resource will copy simple uni test for both server and slave testing and run test everytime any of nodes is rebuild.
 
 ``note``: instance with 01 (count 0) is consider as server always.
 
@@ -19,10 +28,20 @@ Currently only 1 server and X slaves is supported.
 gcloud-nomad-iac
     scripts
       |— startup.sh
+      |— nomad-server.service
+      |— nomad-slave.service
+      |— server.hcl
+      |— slave.hcl
     secret
       |— nomad.json
+      |— nomad_id_rsa
+      |— nomad_id_rsa.pub
+    test
+      |— goss-nomad-server.yaml
+      |— goss-nomad-slave.yaml
     |— main.tf
     |— dns.tf
+    |— test.tf
     |— provider.tf
     |— outputs.tf
     |— variables.tf
@@ -51,7 +70,7 @@ automatically output the public IP address of all hosts.
 
 ## Nomad ui
 
-Ui is available at http://nomad-01:4646/ui
+UI is available at http://nomad-01:4646/ui
 
 ## Maintainer
 `Simian Labs` - (https://github.com/simianlabs)  
