@@ -31,10 +31,11 @@ resource "google_compute_firewall" "default" {
 resource "google_compute_instance" "nomad-host" {
   count = "${var.host_count}"
 
-  name         = "nomad-${format("%02d", count.index+1)}"
-  machine_type = "${var.machine_type}"
-  zone         = "${var.region_zone}"
-  tags         = ["nomad-node"]
+  name                      = "nomad-${format("%02d", count.index+1)}"
+  machine_type              = "${var.machine_type}"
+  zone                      = "${var.region_zone}"
+  tags                      = ["nomad-node"]
+  allow_stopping_for_update = "${var.allow_stopping_for_update}"
 
   boot_disk {
     initialize_params {
@@ -115,6 +116,19 @@ resource "google_compute_instance" "nomad-host" {
 
     inline = [
       "systemctl enable nomad",
+    ]
+  }
+
+  provisioner "remote-exec" {
+    connection {
+      type        = "ssh"
+      user        = "root"
+      private_key = "${file("${var.private_key_path}")}"
+      agent       = false
+    }
+
+    inline = [
+      "curl -fsSL https://goss.rocks/install | sh",
     ]
   }
 }

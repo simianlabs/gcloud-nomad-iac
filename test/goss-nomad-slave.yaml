@@ -1,0 +1,25 @@
+file:
+  /opt/nomad/bin/nomad:
+    exists: true
+    mode: "0755"
+    size: 46836736
+    owner: root
+    group: root
+    filetype: file
+    contains: []
+  /opt/nomad/conf/slave.hcl:
+    exists: true
+    owner: root
+    group: root
+    contains: []
+service:
+  docker:
+    enabled: true
+    running: true
+  nomad:
+    enabled: true
+    running: true
+group:
+  docker:
+    exists: true
+    gid: 999

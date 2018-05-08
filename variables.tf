@@ -65,3 +65,15 @@ variable "nomad_slave_service_path" {
 variable "nomad_service_dest_path" {
   default = "/etc/systemd/system/nomad.service"
 }
+
+variable "goss_server_test" {
+  default = "test/goss-nomad-server.yaml"
+}
+
+variable "goss_slave_test" {
+  default = "test/goss-nomad-slave.yaml"
+}
+
+variable "allow_stopping_for_update" {
+  default = "true"
+}

@@ -1,0 +1,48 @@
+file:
+  /opt/nomad/bin/nomad:
+    exists: true
+    mode: "0755"
+    size: 46836736
+    owner: root
+    group: root
+    filetype: file
+    contains: []
+  /opt/nomad/conf/server.hcl:
+    exists: true
+    owner: root
+    group: root
+    contains: []
+service:
+  docker:
+    enabled: true
+    running: true
+  nomad:
+    enabled: true
+    running: true
+group:
+  docker:
+    exists: true
+    gid: 999
+command:
+  nomad node status:
+    exit-status: 0
+    stdout:
+    - ID        DC   Name      Class   Drain  Eligibility  Status
+    - nomad-02  <none>  false  eligible     ready
+    - nomad-03  <none>  false  eligible     ready
+    - nomad-04  <none>  false  eligible     ready
+    stderr: []
+    timeout: 10000
+  nomad server members:
+    exit-status: 0
+    stdout:
+    - nomad-01
+    stderr: []
+    timeout: 10000
+http:
+  http://localhost:4646/ui:
+    status: 200
+    allow-insecure: false
+    no-follow-redirects: false
+    timeout: 5000
+    body: []
